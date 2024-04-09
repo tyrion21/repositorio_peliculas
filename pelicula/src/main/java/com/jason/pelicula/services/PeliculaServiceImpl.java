@@ -1,6 +1,5 @@
 package com.jason.pelicula.services;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -10,10 +9,9 @@ import org.springframework.stereotype.Service;
 import com.jason.pelicula.model.Pelicula;
 import com.jason.pelicula.repositories.PeliculaRepository;
 
-
 @Service
 
-public class PeliculaServiceImpl implements PeliculaService{
+public class PeliculaServiceImpl implements PeliculaService {
 
     @Autowired
     private PeliculaRepository peliculaRepository;
@@ -23,10 +21,14 @@ public class PeliculaServiceImpl implements PeliculaService{
         return peliculaRepository.findAll();
     }
 
-    @SuppressWarnings("null")
     @Override
     public Optional<Pelicula> getPeliculaById(Long id) {
         return peliculaRepository.findById(id);
     }
-    
+
+    @Override
+    public Pelicula createPelicula(Pelicula pelicula) {
+        return peliculaRepository.save(pelicula);
+    }
+
 }
