@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jason.pelicula.model.Pelicula;
 import com.jason.pelicula.services.PeliculaService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/peliculas")
@@ -28,5 +31,11 @@ public class PeliculaController {
     public Optional<Pelicula> getPeliculaById(@PathVariable Long id) {
         return peliculaService.getPeliculaById(id);
     }
+
+    @PostMapping
+    public Pelicula createPelicula(@RequestBody Pelicula pelicula) {
+        return peliculaService.createPelicula(pelicula);
+    }
+    
 
 }
